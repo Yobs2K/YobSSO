@@ -1,4 +1,4 @@
-package entity;
+package com.example.db.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
