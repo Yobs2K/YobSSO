@@ -29,6 +29,7 @@
     <modules>
         <module>core</module>
         <module>db</module>
+        <module>web</module>
     </modules>
 
     <dependencyManagement>
@@ -62,12 +63,13 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
-
+            <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
-                <scope>runtime</scope>
+                <version>42.5.1</version>
             </dependency>
+
 
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
             <dependency>
