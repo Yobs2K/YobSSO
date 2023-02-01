@@ -13,11 +13,7 @@ public class Company extends AbstractBaseEntity<Long>{
     private String name;
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "company_user",
-        joinColumns = @JoinColumn(name = "company_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
+    @ManyToMany(mappedBy = "companies", fetch = FetchType.LAZY)
     private Set<User> users;
 
     public Set<User> getUsers() {
