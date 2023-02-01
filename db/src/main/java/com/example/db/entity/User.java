@@ -8,17 +8,15 @@ import java.util.Set;
 @Table(name = "user")
 public class User extends AbstractBaseEntity<Long> {
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
     private Set<Company> companies = new HashSet<>();
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Group> groups = new HashSet<>();
 
     public Set<Company> getCompanies() {
         return companies;
     }
 
-    public Set<Group> getGroups() {
-        return groups;
+    public User setCompanies(Set<Company> companies) {
+        this.companies = companies;
+        return this;
     }
 }
