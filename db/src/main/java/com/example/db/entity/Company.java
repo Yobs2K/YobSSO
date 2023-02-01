@@ -10,12 +10,15 @@ import java.util.Set;
 @Table(name = "company")
 public class Company extends AbstractBaseEntity<Long>{
 
+    private String name;
+    private String description;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "company_user",
         joinColumns = @JoinColumn(name = "company_id"),
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private Set<User> users = new HashSet<>();
+    private Set<User> users;
 
     public Set<User> getUsers() {
         return users;
@@ -23,6 +26,24 @@ public class Company extends AbstractBaseEntity<Long>{
 
     public Company setUsers(Set<User> users) {
         this.users = users;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Company setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Company setDescription(String description) {
+        this.description = description;
         return this;
     }
 }
