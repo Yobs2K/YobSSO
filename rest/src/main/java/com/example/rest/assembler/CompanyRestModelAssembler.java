@@ -16,27 +16,18 @@ public class CompanyRestModelAssembler {
         List <CompanyDto> companyDtoList = new ArrayList<>();
         for (Company company : companies) {
             CompanyDto companyDto = new CompanyDto();
-            List<Long> userIds = new ArrayList<>();
-            for (User user : company.getUsers()) {
-                userIds.add(user.getId());
-            }
             companyDto.setId(company.getId())
-                      .setUserIds(userIds);
-            companyDtoList.add(
-                    companyDto.setId(company.getId())
-                              .setUserIds(userIds)
-            );
+                    .setDescription(company.getDescription())
+                    .setName(company.getName());
+            companyDtoList.add(companyDto);
         }
         return companyDtoList;
     }
 
     public CompanyDto toDto(Company company) {
         CompanyDto companyDto = new CompanyDto();
-        List<Long> userIds = new ArrayList<>();
-        for (User user : company.getUsers()) {
-            userIds.add(user.getId());
-        }
         return companyDto.setId(company.getId())
-                         .setUserIds(userIds);
+                .setDescription(company.getDescription())
+                .setName(company.getName());
     }
 }

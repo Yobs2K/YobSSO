@@ -18,7 +18,11 @@ public class RestCompanyServiceImpl implements RestCompanyService {
     private final UserRestModelAssembler userRestModelAssembler;
 
     @Autowired
-    public RestCompanyServiceImpl(CompanyService companyCoreService, CompanyRestModelAssembler companyRestModelAssembler, UserRestModelAssembler userRestModelAssembler) {
+    public RestCompanyServiceImpl(
+            CompanyService companyCoreService,
+            CompanyRestModelAssembler companyRestModelAssembler,
+            UserRestModelAssembler userRestModelAssembler
+    ) {
         this.companyCoreService = companyCoreService;
         this.companyRestModelAssembler = companyRestModelAssembler;
         this.userRestModelAssembler = userRestModelAssembler;

@@ -18,7 +18,11 @@ public class RestUserServiceImpl implements RestUserService {
     private final CompanyRestModelAssembler companyRestModelAssembler;
 
     @Autowired
-    public RestUserServiceImpl(UserService userCoreService, UserRestModelAssembler userRestModelAssembler, CompanyRestModelAssembler companyRestModelAssembler) {
+    public RestUserServiceImpl(
+            UserService userCoreService,
+            UserRestModelAssembler userRestModelAssembler,
+            CompanyRestModelAssembler companyRestModelAssembler
+    ) {
         this.userCoreService = userCoreService;
         this.userRestModelAssembler = userRestModelAssembler;
         this.companyRestModelAssembler = companyRestModelAssembler;

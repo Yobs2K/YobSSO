@@ -6,7 +6,9 @@ public class CompanyDto {
 
     private Long id;
 
-    private List<Long> userIds;
+    private String name;
+
+    private String description;
 
     public Long getId() {
         return id;
@@ -17,12 +19,21 @@ public class CompanyDto {
         return this;
     }
 
-    public List<Long> getUserIds() {
-        return userIds;
+    public String getName() {
+        return name;
     }
 
-    public CompanyDto setUserIds(List<Long> userIds) {
-        this.userIds = userIds;
+    public CompanyDto setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CompanyDto setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

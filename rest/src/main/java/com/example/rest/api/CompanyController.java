@@ -3,6 +3,7 @@ package com.example.rest.api;
 import com.example.rest.dto.CompanyDto;
 import com.example.rest.dto.UserDto;
 import com.example.rest.service.RestCompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ public class CompanyController {
 
     private final RestCompanyService restCompanyService;
 
+    @Autowired
     public CompanyController(RestCompanyService restCompanyService) {
         this.restCompanyService = restCompanyService;
     }

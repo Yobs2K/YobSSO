@@ -1,5 +1,6 @@
 package com.example.core.service;
 
+import com.example.core.exceptions.CompanyNotFoundException;
 import com.example.db.entity.Company;
 import com.example.db.repository.CompanyRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -23,7 +24,6 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     public Company getCompanyById(Long id) {
-        return companyRepository.findById(id).orElseThrow(() -> new RuntimeException());
-        //TODO заменить Exception
+        return companyRepository.findById(id).orElseThrow(() -> new CompanyNotFoundException());
     }
 }

@@ -6,7 +6,13 @@ public class UserDto {
 
     private Long id;
 
-    private List<Long> companyIds;
+    private String username;
+
+    private String password;
+
+    private String email;
+
+    private boolean isBanned;
 
     public Long getId() {
         return id;
@@ -17,12 +23,39 @@ public class UserDto {
         return this;
     }
 
-    public List<Long> getCompanyIds() {
-        return companyIds;
+    public String getUsername() {
+        return username;
     }
 
-    public UserDto setCompanyIds(List<Long> companyIds) {
-        this.companyIds = companyIds;
+    public UserDto setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UserDto setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public UserDto setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public boolean isBanned() {
+        return isBanned;
+    }
+
+    public UserDto setBanned(boolean banned) {
+        isBanned = banned;
         return this;
     }
 }

@@ -16,28 +16,23 @@ public class UserRestModelAssembler {
         List<UserDto> userDtoList = new ArrayList<>();
         for (User user : users) {
             UserDto userDto = new UserDto();
-            List<Long> companyIds = new ArrayList<>();
-            for (Company company : user.getCompanies()) {
-                companyIds.add(company.getId());
-            }
             userDto.setId(user.getId())
-                   .setCompanyIds(companyIds);
-            userDtoList.add(
-                    userDto.setId(user.getId())
-                           .setCompanyIds(companyIds)
-            );
+                    .setEmail(user.getEmail())
+                    .setUsername(user.getUsername())
+                    .setPassword(user.getPassword())
+                    .setBanned(user.isBanned());
+            userDtoList.add(userDto);
         }
         return userDtoList;
     }
 
     public UserDto toDto(User user) {
         UserDto userDto = new UserDto();
-        List<Long> companyIds = new ArrayList<>();
-        for (Company company : user.getCompanies()) {
-            companyIds.add(company.getId());
-        }
         return userDto.setId(user.getId())
-                      .setCompanyIds(companyIds);
+                .setEmail(user.getEmail())
+                .setUsername(user.getUsername())
+                .setPassword(user.getPassword())
+                .setBanned(user.isBanned());
     }
 
 }
