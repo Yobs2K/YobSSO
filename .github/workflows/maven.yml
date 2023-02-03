@@ -10,9 +10,8 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main", "rest-module", "developer", "feature/continuous_integration" ]
+    branches: [ "main", "rest-module", "developer", "feature" ]
   pull_request:
-    types: [ opened, reopened ]
     branches: [ "main", "rest-module", "developer", "feature" ]
 
 jobs:
