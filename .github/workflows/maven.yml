@@ -27,4 +27,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: ./install_ci.sh
+      run: sh ./install_ci.sh
