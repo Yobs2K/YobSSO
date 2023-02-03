@@ -12,8 +12,8 @@ on:
   push:
     branches: [ "main", "rest-module", "developer", "feature" ]
   pull_request:
-    types: [ opened, reopened ]:
-      branches: [ "main", "rest-module", "developer", "feature" ]
+    types: [ opened, reopened ]
+    branches: [ "main", "rest-module", "developer", "feature" ]
 
 jobs:
   build_main:
