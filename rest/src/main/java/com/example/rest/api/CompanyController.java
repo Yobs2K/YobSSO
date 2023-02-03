@@ -4,6 +4,9 @@ import com.example.rest.dto.CompanyDto;
 import com.example.rest.dto.UserDto;
 import com.example.rest.service.RestCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,13 +24,13 @@ public class CompanyController {
     }
 
     @GetMapping(value = "api/v1/company/")
-    List<CompanyDto> getAllCompanies() {
-        return restCompanyService.getAllCompanies();
+    public PagedModel<CompanyDto> getAllPageable (@PageableDefault Pageable pageable) {
+        return restCompanyService.getAllPageable(pageable);
     }
 
     @GetMapping(value = "api/v1/company/{id}")
     public CompanyDto getCompanyById(@PathVariable final Long id) {
-        return restCompanyService.getCompanyById(id);
+        return restCompanyService.getById(id);
     }
 
     @GetMapping (value = "api/v1/company/{id}/users")
