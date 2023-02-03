@@ -2,7 +2,6 @@ package com.example.rest.service;
 
 import com.example.core.service.CompanyService;
 import com.example.db.entity.Company;
-import com.example.db.entity.User;
 import com.example.rest.assembler.CompanyRestModelAssembler;
 import com.example.rest.assembler.UserRestModelAssembler;
 import com.example.rest.dto.CompanyDto;
@@ -14,7 +13,6 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,11 +38,7 @@ public class RestCompanyServiceImpl implements RestCompanyService {
     }
 
     public List<CompanyDto> getAll() {
-        List<CompanyDto> companyDtoList = new ArrayList<>();
-        for (Company company : companyCoreService.getAll()) {
-            companyDtoList.add(companyRestModelAssembler.toModel(company));
-        }
-        return companyDtoList;
+        return companyRestModelAssembler.toModelList(companyCoreService.getAll());
     }
 
     @Override
@@ -58,10 +52,6 @@ public class RestCompanyServiceImpl implements RestCompanyService {
     }
 
     public List<UserDto> getCompanyUsers(Long id) {
-        List<UserDto> userDtoList = new ArrayList<>();
-        for (User user : companyCoreService.getById(id).getUsers()) {
-            userDtoList.add(userRestModelAssembler.toModel(user));
-        }
-        return userDtoList;
+        return userRestModelAssembler.toModelList(companyCoreService.getById(id).getUsers());
     }
 }

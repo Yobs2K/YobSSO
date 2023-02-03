@@ -1,7 +1,6 @@
 package com.example.rest.service;
 
 import com.example.core.service.UserService;
-import com.example.db.entity.Company;
 import com.example.db.entity.User;
 import com.example.rest.assembler.CompanyRestModelAssembler;
 import com.example.rest.assembler.UserRestModelAssembler;
@@ -40,11 +39,7 @@ public class RestUserServiceImpl implements RestUserService {
     }
 
     public List<UserDto> getAll() {
-        List<UserDto> userDtoList = new ArrayList<>();
-        for (User user : userCoreService.getAll()) {
-            userDtoList.add(userRestModelAssembler.toModel(user));
-        }
-        return userDtoList;
+        return userRestModelAssembler.toModelList(userCoreService.getAll());
     }
 
     @Override
@@ -58,10 +53,6 @@ public class RestUserServiceImpl implements RestUserService {
     }
 
     public List<CompanyDto> getUserCompanies(Long id) {
-        List<CompanyDto> companyDtoList = new ArrayList<>();
-        for (Company company : userCoreService.getById(id).getCompanies()) {
-            companyDtoList.add(companyRestModelAssembler.toModel(company));
-        }
-        return companyDtoList;
+        return companyRestModelAssembler.toModelList(userCoreService.getById(id).getCompanies());
     }
 }
