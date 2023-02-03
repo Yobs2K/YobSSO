@@ -31,7 +31,8 @@ public class RestCompanyServiceImpl implements RestCompanyService {
             CompanyService companyCoreService,
             CompanyRestModelAssembler companyRestModelAssembler,
             UserRestModelAssembler userRestModelAssembler,
-            PagedResourcesAssembler<Company> pagedResourcesAssembler) {
+            PagedResourcesAssembler<Company> pagedResourcesAssembler
+    ) {
         this.companyCoreService = companyCoreService;
         this.companyRestModelAssembler = companyRestModelAssembler;
         this.userRestModelAssembler = userRestModelAssembler;

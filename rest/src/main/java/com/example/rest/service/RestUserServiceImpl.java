@@ -31,7 +31,8 @@ public class RestUserServiceImpl implements RestUserService {
             UserService userCoreService,
             UserRestModelAssembler userRestModelAssembler,
             CompanyRestModelAssembler companyRestModelAssembler,
-            PagedResourcesAssembler<User> pagedResourcesAssembler) {
+            PagedResourcesAssembler<User> pagedResourcesAssembler
+    ) {
         this.userCoreService = userCoreService;
         this.userRestModelAssembler = userRestModelAssembler;
         this.companyRestModelAssembler = companyRestModelAssembler;
