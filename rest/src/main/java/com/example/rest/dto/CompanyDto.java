@@ -1,23 +1,10 @@
 package com.example.rest.dto;
 
-import java.util.List;
-
-public class CompanyDto {
-
-    private Long id;
+public class CompanyDto extends BaseRestModel<CompanyDto> {
 
     private String name;
 
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public CompanyDto setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public String getName() {
         return name;

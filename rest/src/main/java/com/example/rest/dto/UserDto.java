@@ -1,10 +1,6 @@
 package com.example.rest.dto;
 
-import java.util.List;
-
-public class UserDto {
-
-    private Long id;
+public class UserDto extends BaseRestModel<UserDto> {
 
     private String username;
 
@@ -13,15 +9,6 @@ public class UserDto {
     private String email;
 
     private boolean isBanned;
-
-    public Long getId() {
-        return id;
-    }
-
-    public UserDto setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public String getUsername() {
         return username;
