@@ -30,4 +30,3 @@ jobs:
     - name: Build with Maven
       run: |
         mvn install -pl .
-        mvn --projects db,core clean install -DskipTests;
