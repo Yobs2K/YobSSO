@@ -31,3 +31,6 @@ jobs:
 
     - name: Build with Maven web
       run: sh ./install-web.sh
+
+    - name: Build with Maven web
+      run: sh ./install-rest.sh
