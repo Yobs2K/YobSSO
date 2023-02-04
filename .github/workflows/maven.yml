@@ -12,6 +12,7 @@ on:
   push:
     branches: [ "main", "rest-module", "developer", "feature" ]
   pull_request:
+    types: [ opened, reopened ]
     branches: [ "main", "rest-module", "developer", "feature" ]
 
 jobs:
@@ -27,5 +28,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: sh ./install_ci.sh
+
+    - name: Build with Maven web
+      run: sh ./install-web.sh
