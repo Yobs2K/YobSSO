@@ -29,8 +29,5 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven rest
-      run: sh ./install-rest.sh
-
     - name: Build with Maven web
       run: sh ./install-web.sh
