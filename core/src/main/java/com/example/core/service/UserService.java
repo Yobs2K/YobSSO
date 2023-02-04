@@ -1,4 +1,4 @@
-package service;
+package com.example.core.service;
 
 public interface UserService {
 }

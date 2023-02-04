@@ -1,6 +1,5 @@
-package service;
+package com.example.core.service;
 
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 @Service
