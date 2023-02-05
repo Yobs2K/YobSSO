@@ -13,7 +13,7 @@ public class User extends AbstractBaseEntity<Long> {
     private String password;
     private boolean isBanned = false;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_to_company",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id")
