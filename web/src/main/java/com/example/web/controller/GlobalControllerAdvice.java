@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
-@ControllerAdvice(assignableTypes = GreetingsController.class)
+@ControllerAdvice(basePackages = "com.example.web.controller")
 public class GlobalControllerAdvice {
     private final HeaderNavbar headerNavbar;
 
