@@ -9,11 +9,13 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("api/v1/company")
 public class CompanyController {
 
     private final RestCompanyService restCompanyService;
@@ -23,17 +25,17 @@ public class CompanyController {
         this.restCompanyService = restCompanyService;
     }
 
-    @GetMapping(value = "api/v1/company/")
+    @GetMapping()
     public PagedModel<CompanyDto> getAllPageable (@PageableDefault Pageable pageable) {
         return restCompanyService.getAllPageable(pageable);
     }
 
-    @GetMapping(value = "api/v1/company/{id}")
+    @GetMapping("{id}")
     public CompanyDto getCompanyById(@PathVariable final Long id) {
         return restCompanyService.getById(id);
     }
 
-    @GetMapping (value = "api/v1/company/{id}/users")
+    @GetMapping (value = "{id}/users")
     public List<UserDto> getCompanyUsers(@PathVariable final Long id) {
         return restCompanyService.getCompanyUsers(id);
     }

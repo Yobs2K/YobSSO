@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class BaseRestModelAssembler<E extends AbstractBaseEntity, M extends BaseRestModel<M>>
+public abstract class BaseRestModelAssembler<E extends AbstractBaseEntity<Long>, M extends BaseRestModel<M>>
         implements RepresentationModelAssembler<E, M> {
 
     public abstract M toModel(E entity);

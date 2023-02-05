@@ -9,11 +9,12 @@ public class UserRestModelAssembler extends BaseRestModelAssembler<User, UserDto
     public UserDto toModel(User user) {
         UserDto model = new UserDto();
 
-        return model.setId(user.getId())
-                .setEmail(user.getEmail())
-                .setUsername(user.getUsername())
-                .setPassword(user.getPassword())
-                .setBanned(user.isBanned());
+        return model
+                    .setId(user.getId())
+                    .setEmail(user.getEmail())
+                    .setUsername(user.getUsername())
+                    .setPassword(user.getPassword())
+                    .setBanned(user.isBanned());
     }
 
 }
