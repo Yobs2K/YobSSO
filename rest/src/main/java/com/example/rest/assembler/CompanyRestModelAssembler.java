@@ -10,9 +10,9 @@ public class CompanyRestModelAssembler extends BaseRestModelAssembler<Company, C
         CompanyDto model = new CompanyDto();
 
         return model
-                .setId(company.getId())
-                .setDescription(company.getDescription())
-                .setName(company.getName());
+                    .setId(company.getId())
+                    .setDescription(company.getDescription())
+                    .setName(company.getName());
     }
 
 }
