@@ -1,0 +1,1 @@
+ALTER TABLE user_to_company ADD COLUMN user_role VARCHAR NOT NULL DEFAULT 'USER'
