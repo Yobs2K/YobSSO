@@ -42,10 +42,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/", false)
                 ;
 
-
         http.csrf().disable();
-
-
     }
 
     @Bean

@@ -1,13 +1,7 @@
 package com.example.web.configuration;
 
-import freemarker.cache.ClassTemplateLoader;
-import freemarker.cache.TemplateLoader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.freemarker.FreeMarkerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
-import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
