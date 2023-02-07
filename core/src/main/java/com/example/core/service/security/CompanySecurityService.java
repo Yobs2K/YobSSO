@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 import java.util.Optional;
 
-@Component
+@Component("companySecurityService")
 public class CompanySecurityService {
     private final UserToCompanyService userToCompanyService;
 
