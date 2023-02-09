@@ -2,8 +2,6 @@ package com.example.db.repository;
 
 import com.example.db.entity.Company;
 import com.example.db.entity.enumerated.UserCompanyRole;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,8 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
-    
-    Page<Company> findAllPageable(Pageable pageable);
 
     Optional<Company> findByNameIgnoreCase(String name);
 

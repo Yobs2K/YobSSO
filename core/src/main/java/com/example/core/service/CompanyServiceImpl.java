@@ -36,7 +36,7 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     public Page<Company> getAllPageable(Pageable pageable) {
-        return companyRepository.findAllPageable(pageable);
+        return companyRepository.findAll(pageable);
     }
 
     public Company getById(Long id) {
