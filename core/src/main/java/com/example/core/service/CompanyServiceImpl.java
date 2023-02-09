@@ -31,6 +31,36 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     public Company getById(Long id) {
-        return companyRepository.findById(id).orElseThrow(() -> new CompanyNotFoundException());
+        return companyRepository.findById(id).orElseThrow(CompanyNotFoundException::new);
+    }
+
+    @Override
+    public List<Company> findAllUserCompaniesByUserId(Long userId) {
+        return null; //TODO логика возврата всех компаний юзера
+    }
+
+    @Override
+    public List<Company> findAllUserIsAdminCompaniesByUserId(Long userId) {
+        return null; //TODO логика возврата всех компаний где юзер является админом
+    }
+
+    @Override
+    public Company addCompany(Company company) {
+        return null; //TODO логика добавления компании и мб валидация
+    }
+
+    @Override
+    public Company updateCompany(Company company, Long id) {
+        return null; //TODO логика обновления компании и мб валидация
+    }
+
+    @Override
+    public Company deleteCompanyById(Long id) {
+        return null; //TODO логика удаления компании
+    }
+
+    @Override
+    public Company addUserToCompanyByIds(Long userId, Long companyId) {
+        return null; //TODO логика добавления юзера в компанию
     }
 }

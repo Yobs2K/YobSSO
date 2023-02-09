@@ -17,4 +17,20 @@ public class CompanyController {
     ) {
         this.companyWebService = companyWebService;
     }
+
+    //getAllCompaniesPageable(Pageable pageable)
+
+    //getAllAuthUserCompanies(AuthUser authUser)
+
+    //getAllAuthUserIsAdminCompanies(AuthUser authUser)
+
+    //getCompanyById(Long id)
+
+    //createCompany(CompanyWebModel model)
+
+    //updateCompany(CompanyWebModel model, Long id)
+
+    //deleteCompany(Lond id)
+
+    //addUserToCompany(Long userId, Long companyId)
 }

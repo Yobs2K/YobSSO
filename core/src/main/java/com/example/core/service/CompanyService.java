@@ -13,4 +13,16 @@ public interface CompanyService {
     Page<Company> getAllPageable(Pageable pageable);
 
     Company getById(Long id);
+
+    List<Company> findAllUserCompaniesByUserId(Long userId);
+
+    List<Company> findAllUserIsAdminCompaniesByUserId(Long userId);
+
+    Company addCompany(Company company);
+
+    Company updateCompany(Company company, Long id);
+
+    Company deleteCompanyById(Long id);
+
+    Company addUserToCompanyByIds(Long userId, Long companyId);
 }
