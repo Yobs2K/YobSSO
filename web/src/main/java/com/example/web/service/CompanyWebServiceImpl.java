@@ -46,9 +46,15 @@ public class CompanyWebServiceImpl implements CompanyWebService {
     }
 
     @Override
-    public CompanyWebModel createCompany(CompanyWebModel companyWebModel) {
+    public CompanyWebModel createCompany(CompanyWebModel companyWebModel, SimpleUserModel userModel) {
         Company company = companyAssembler.toEntity(companyWebModel);
-        return companyAssembler.toModel(companyService.addCompany(company));
+        return companyAssembler.toModel(
+                companyService.addUserToCompanyByIds(
+                    companyService.addCompany(company).getId(),
+                    userModel.getId()
+                )
+        );
+
     }
 
     @Override

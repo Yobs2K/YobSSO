@@ -17,7 +17,7 @@ public interface CompanyWebService {
 
     CompanyWebModel findCompanyById(Long id);
 
-    CompanyWebModel createCompany(CompanyWebModel companyWebModel);
+    CompanyWebModel createCompany(CompanyWebModel companyWebModel, SimpleUserModel userModel);
 
     CompanyWebModel updateCompany(CompanyWebModel companyWebModel, Long id);
 
