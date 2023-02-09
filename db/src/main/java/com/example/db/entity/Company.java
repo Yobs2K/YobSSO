@@ -1,9 +1,6 @@
 package com.example.db.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,6 +37,12 @@ public class Company extends AbstractBaseEntity<Long>{
 
     public Company setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public Company addUser(User user) {
+        users.add(user);
+        user.addCompany(this);
         return this;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.db.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -62,6 +61,11 @@ public class User extends AbstractBaseEntity<Long> {
 
     public User setBanned(boolean banned) {
         isBanned = banned;
+        return this;
+    }
+
+    User addCompany(Company company) {
+        companies.add(company);
         return this;
     }
 }

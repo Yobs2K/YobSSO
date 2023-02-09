@@ -47,15 +47,13 @@ public class CompanyWebServiceImpl implements CompanyWebService {
 
     @Override
     public CompanyWebModel createCompany(CompanyWebModel companyWebModel) {
-        Company company = new Company();
-        // TODO сделать логику создания компании из модели
+        Company company = companyAssembler.toEntity(companyWebModel);
         return companyAssembler.toModel(companyService.addCompany(company));
     }
 
     @Override
     public CompanyWebModel updateCompany(CompanyWebModel companyWebModel, Long id) {
-        Company company = new Company();
-        // TODO сделать логику создания компании из модели
+        Company company = companyAssembler.toEntity(companyWebModel);
         return companyAssembler.toModel(companyService.updateCompany(company, id));
     }
 

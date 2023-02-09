@@ -8,6 +8,21 @@ import org.springframework.stereotype.Component;
 public class CompanyWebModelAssembler extends BaseWebModelAssembler<Company, CompanyWebModel> {
     @Override
     public CompanyWebModel toModel(Company entity) {
-        return null; //TODO доделать companyToModel
+        CompanyWebModel model = new CompanyWebModel();
+        model
+                .setId(model.getId())
+                .setName(model.getName())
+                .setDescription(model.getDescription());
+        return model;
+    }
+
+    @Override
+    public Company toEntity(CompanyWebModel model) {
+        Company entity = (Company)new Company()
+                .setId(model.getId());
+        entity
+                .setName(model.getName())
+                .setDescription(model.getDescription());
+        return entity;
     }
 }
