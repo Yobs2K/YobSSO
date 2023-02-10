@@ -7,8 +7,10 @@ import java.util.Set;
 @Table(name = "company")
 public class Company extends AbstractBaseEntity<Long>{
 
-    private String name;
+    private String username;
     private String description;
+
+    private Long ownerId;
 
     @ManyToMany(mappedBy = "companies", fetch = FetchType.LAZY)
     private Set<User> users;
@@ -22,12 +24,12 @@ public class Company extends AbstractBaseEntity<Long>{
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public Company setName(String name) {
-        this.name = name;
+    public Company setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -42,7 +44,16 @@ public class Company extends AbstractBaseEntity<Long>{
 
     public Company addUser(User user) {
         users.add(user);
-        user.addCompany(this);
+        user.getCompanies().add(this);
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public Company setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 }

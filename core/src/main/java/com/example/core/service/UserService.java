@@ -13,4 +13,6 @@ public interface UserService {
     Page<User> getAllPageable(Pageable pageable);
 
     User getById(Long id);
+
+    User addUser(User user);
 }

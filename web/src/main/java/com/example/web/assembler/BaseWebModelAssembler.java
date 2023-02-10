@@ -14,11 +14,4 @@ public abstract class BaseWebModelAssembler<E extends AbstractBaseEntity<Long>, 
     public List<M> toModelList(Collection<E> entities) {
         return entities.stream().map(this::toModel).collect(Collectors.toList());
     }
-
-    public abstract E toEntity(M model); // Возможно вынести в отдельный класс
-
-    public List<E> toEntityList(Collection<M> models) {
-        return models.stream().map(this::toEntity).collect(Collectors.toList());
-        // Возможно вынести в отдельный класс
-    }
 }

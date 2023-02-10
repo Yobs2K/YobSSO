@@ -2,16 +2,16 @@ package com.example.rest.dto;
 
 public class CompanyDto extends BaseRestModel<CompanyDto> {
 
-    private String name;
+    private String username;
 
     private String description;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public CompanyDto setName(String name) {
-        this.name = name;
+    public CompanyDto setUsername(String username) {
+        this.username = username;
         return this;
     }
 

@@ -17,16 +17,4 @@ public class UserWebModelAssembler extends BaseWebModelAssembler<User, UserWebMo
                 .setPassword(model.getPassword());
         return model;
     }
-
-    @Override
-    public User toEntity(UserWebModel model) {
-        User user = (User)new User()
-                .setId(model.getId());
-        user
-                .setUsername(model.getUsername())
-                .setEmail(model.getEmail())
-                .setBanned(model.isBanned())
-                .setPassword(model.getPassword());
-        return user;
-    }
 }

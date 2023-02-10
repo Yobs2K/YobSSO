@@ -1,0 +1,1 @@
+ALTER TABLE company ADD owner_id BIGSERIAL REFERENCES users (id);

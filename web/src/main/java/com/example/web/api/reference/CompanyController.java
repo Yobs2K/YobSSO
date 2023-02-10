@@ -1,6 +1,7 @@
 package com.example.web.api.reference;
 
 import com.example.core.model.AuthUser;
+import com.example.web.form.CreateCompanyForm;
 import com.example.web.model.CompanyWebModel;
 import com.example.web.service.CompanyWebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,14 +46,18 @@ public class CompanyController {
     }
 
     @PostMapping("")
-    public CompanyWebModel createCompany(@AuthenticationPrincipal AuthUser authUser, CompanyWebModel model) {
-        return companyWebService.createCompany(model, authUser.getUserModel());
+    public CompanyWebModel createCompany(@AuthenticationPrincipal AuthUser authUser, CreateCompanyForm companyForm) {
+        return companyWebService.addCompany(companyForm, authUser.getUserModel().getId());
     }
 
     //PreAuthorize - ADMIN
-    @PostMapping("/{id}")
-    public CompanyWebModel updateCompany(CompanyWebModel companyWebModel, @PathVariable Long id) {
-        return companyWebService.updateCompany(companyWebModel, id);
+    @PutMapping("/{id}")
+    public CompanyWebModel updateCompany(
+            @AuthenticationPrincipal AuthUser authUser,
+            CreateCompanyForm companyForm,
+            @PathVariable Long id)
+    {
+        return companyWebService.updateCompany(companyForm, id, authUser.getUserModel().getId());
     }
 
     @DeleteMapping("/{id}")
