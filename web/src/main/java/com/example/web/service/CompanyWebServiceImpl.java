@@ -1,5 +1,6 @@
 package com.example.web.service;
 
+import com.example.core.exceptions.CompanyNotFoundException;
 import com.example.core.model.SimpleUserModel;
 import com.example.core.service.CompanyService;
 import com.example.db.entity.Company;
@@ -59,8 +60,17 @@ public class CompanyWebServiceImpl implements CompanyWebService {
 
     @Override
     public CompanyWebModel updateCompany(CompanyWebModel companyWebModel, Long id) {
-        Company company = companyAssembler.toEntity(companyWebModel);
-        return companyAssembler.toModel(companyService.updateCompany(company, id));
+        Company company;
+        try {
+            company = companyService.getById(id);
+        }
+        catch (CompanyNotFoundException e) {
+            company = new Company();
+        }
+        company
+                .setName(companyWebModel.getName())
+                .setDescription(companyWebModel.getDescription());
+        return companyAssembler.toModel(companyService.addCompany(company));
     }
 
     @Override

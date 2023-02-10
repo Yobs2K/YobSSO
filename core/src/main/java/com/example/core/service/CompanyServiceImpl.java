@@ -56,24 +56,7 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public Company addCompany(Company company) {
-        if (companyRepository.existsById(company.getId()))
-            throw new RuntimeException("Company with that ID already exists");
-        if (companyRepository.findByNameIgnoreCase(company.getName()).isPresent())
-            throw new RuntimeException("Company with that name already exists");
         return companyRepository.save(company);
-    }
-
-    @Override
-    public Company updateCompany(Company newCompany, Long id) {
-        Company oldCompany = companyRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No Company with that ID"));
-        if (!oldCompany.getName().equalsIgnoreCase(newCompany.getName()) &&
-                companyRepository.existsByName(newCompany.getName()))
-            throw new RuntimeException("Company with that name already exists");
-        oldCompany
-                .setName(newCompany.getName())
-                .setDescription(newCompany.getDescription());
-        return companyRepository.save(oldCompany);
     }
 
     @Override
