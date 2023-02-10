@@ -12,9 +12,9 @@ public interface CompanyWebService {
 
     Page<CompanyWebModel> findAllCompaniesPageable(Pageable pageable);
 
-    List<CompanyWebModel> findAllAuthUserCompanies(SimpleUserModel userModel);
+    List<CompanyWebModel> findAllAuthUserCompanies(Long userId);
 
-    List<CompanyWebModel> findAllAuthUserIsAdminCompanies(SimpleUserModel userModel);
+    List<CompanyWebModel> findAllAuthUserIsAdminCompanies(Long userId);
 
     CompanyWebModel findCompanyById(Long id);
 

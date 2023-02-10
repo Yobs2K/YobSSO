@@ -39,13 +39,13 @@ public class CompanyWebServiceImpl implements CompanyWebService {
     }
 
     @Override
-    public List<CompanyWebModel> findAllAuthUserCompanies(SimpleUserModel userModel) {
-        return companyAssembler.toModelList(companyService.findAllUserCompaniesByUserId(userModel.getId()));
+    public List<CompanyWebModel> findAllAuthUserCompanies(Long userId) {
+        return companyAssembler.toModelList(companyService.findAllUserCompaniesByUserId(userId));
     }
 
     @Override
-    public List<CompanyWebModel> findAllAuthUserIsAdminCompanies(SimpleUserModel userModel) {
-        return companyAssembler.toModelList(companyService.findAllUserIsAdminCompaniesByUserId(userModel.getId()));
+    public List<CompanyWebModel> findAllAuthUserIsAdminCompanies(Long userId) {
+        return companyAssembler.toModelList(companyService.findAllUserIsAdminCompaniesByUserId(userId));
     }
 
     @Override

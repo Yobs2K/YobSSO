@@ -32,12 +32,12 @@ public class CompanyController {
 
     @GetMapping("/belongTo") // Придумать адрес получше
     public List<CompanyWebModel> getAllAuthUserCompanies(@AuthenticationPrincipal AuthUser authUser) {
-        return companyWebService.findAllAuthUserCompanies(authUser.getUserModel());
+        return companyWebService.findAllAuthUserCompanies(authUser.getUserModel().getId());
     }
 
     @GetMapping("/admin") // Придумать адрес получше
     public List<CompanyWebModel> getAllAuthUserIsAdminCompanies(@AuthenticationPrincipal AuthUser authUser) {
-        return companyWebService.findAllAuthUserIsAdminCompanies(authUser.getUserModel());
+        return companyWebService.findAllAuthUserIsAdminCompanies(authUser.getUserModel().getId());
     }
 
     @GetMapping("/{id}")
