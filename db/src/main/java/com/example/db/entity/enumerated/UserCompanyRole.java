@@ -2,7 +2,8 @@ package com.example.db.entity.enumerated;
 
 public enum UserCompanyRole {
     USER,
-    ADMIN
+    ADMIN,
+    OWNER
     ;
 
     public boolean hasAccess(UserCompanyRole role){

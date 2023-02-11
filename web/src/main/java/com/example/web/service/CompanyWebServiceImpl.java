@@ -1,11 +1,11 @@
 package com.example.web.service;
 
 import com.example.core.exceptions.CompanyNotFoundException;
-import com.example.core.model.SimpleUserModel;
 import com.example.core.service.CompanyService;
-import com.example.core.service.UserService;
+import com.example.core.service.UserToCompanyService;
 import com.example.db.entity.Company;
-import com.example.db.entity.User;
+import com.example.db.entity.UserToCompany;
+import com.example.db.entity.enumerated.UserCompanyRole;
 import com.example.web.assembler.CompanyWebModelAssembler;
 import com.example.web.form.CreateCompanyForm;
 import com.example.web.model.CompanyWebModel;
@@ -20,16 +20,16 @@ public class CompanyWebServiceImpl implements CompanyWebService {
 
     private final CompanyService companyService;
 
-    private final UserService userService;
+    private final UserToCompanyService userToCompanyService;
 
     private final CompanyWebModelAssembler companyAssembler;
     public CompanyWebServiceImpl(
             CompanyService companyService,
-            UserService userService,
+            UserToCompanyService userToCompanyService,
             CompanyWebModelAssembler companyAssembler
     ) {
         this.companyService = companyService;
-        this.userService = userService;
+        this.userToCompanyService = userToCompanyService;
         this.companyAssembler = companyAssembler;
     }
 
@@ -57,35 +57,34 @@ public class CompanyWebServiceImpl implements CompanyWebService {
     @Override
     public CompanyWebModel addCompany(CreateCompanyForm companyForm, Long ownerId) {
         Company company = new Company();
-        User owner = userService.getById(ownerId);
-        owner.getCompanies().add(company);
         company
                 .setOwnerId(ownerId)
                 .setUsername(companyForm.getUsername())
-                .setDescription(companyForm.getDescription())
-                .getUsers().add(owner);
-        userService.addUser(owner);
-        return companyAssembler.toModel(companyService.addCompany(company));
+                .setDescription(companyForm.getDescription());
+        company = companyService.addCompany(company);
+        userToCompanyService.addUserToCompany(ownerId, company.getId(), UserCompanyRole.OWNER);
+        return companyAssembler.toModel(company);
     }
     @Override
     public CompanyWebModel updateCompany(CreateCompanyForm companyForm, Long companyId, Long userId) {
         Company company;
         try {
-            company = companyService.getById(companyForm.getId());
+            company = companyService
+                    .getById(companyId)
+                    .setUsername(companyForm.getUsername())
+                    .setDescription(companyForm.getDescription());
         }
-        catch (CompanyNotFoundException | IllegalArgumentException e) {
-            // Если компании с таким ID нет либо ID - null, мы создаём новую
+        catch (CompanyNotFoundException e) {
+            // Если компании с таким ID нет, мы создаём новую
             company = new Company();
-            User owner = userService.getById(userId); // В таком случае мы должны задать ей овнера
-            owner.getCompanies().add(company);        // Овнеру мы тоже должны добавить эту компанию
             company
                     .setOwnerId(userId)
-                    .getUsers().add(owner);
-            userService.addUser(owner); // Сохраняем обновлённую сущность юзера-овнера
+                    .setUsername(companyForm.getUsername())
+                    .setDescription(companyForm.getDescription());
+            company = companyService.addCompany(company);
+            userToCompanyService.addUserToCompany(userId, company.getId(), UserCompanyRole.OWNER);
+            return companyAssembler.toModel(company);
         }
-        company
-                .setUsername(companyForm.getUsername())
-                .setDescription(companyForm.getDescription());
         return companyAssembler.toModel(companyService.addCompany(company));
     }
 
@@ -95,7 +94,7 @@ public class CompanyWebServiceImpl implements CompanyWebService {
     }
 
     @Override
-    public CompanyWebModel addUserToCompany(Long userId, Long companyId) {
-        return companyAssembler.toModel(companyService.addUserToCompanyByIds(userId, companyId));
+    public UserToCompany addUserToCompany(Long userId, Long companyId) {
+        return userToCompanyService.addUserToCompany(userId, companyId, UserCompanyRole.USER);
     }
 }

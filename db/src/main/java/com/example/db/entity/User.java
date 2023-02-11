@@ -63,4 +63,9 @@ public class User extends AbstractBaseEntity<Long> {
         isBanned = banned;
         return this;
     }
+
+    public User addCompany(Company company) {
+        companies.add(company);
+        return this;
+    }
 }

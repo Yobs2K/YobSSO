@@ -68,9 +68,10 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public Company addUserToCompanyByIds(Long userId, Long companyId) {
+        // TODO перенести в UserService
         Company company = companyRepository.findById(companyId).orElseThrow(CompanyNotFoundException::new);
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
-        company.addUser(user);
-        return companyRepository.save(company);
+        userRepository.save(user.addCompany(company));
+        return companyRepository.findById(companyId).orElseThrow(CompanyNotFoundException::new);
     }
 }

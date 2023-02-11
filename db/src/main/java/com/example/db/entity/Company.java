@@ -42,12 +42,6 @@ public class Company extends AbstractBaseEntity<Long>{
         return this;
     }
 
-    public Company addUser(User user) {
-        users.add(user);
-        user.getCompanies().add(this);
-        return this;
-    }
-
     public Long getOwnerId() {
         return ownerId;
     }

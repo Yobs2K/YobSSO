@@ -1,6 +1,7 @@
 package com.example.web.api.reference;
 
 import com.example.core.model.AuthUser;
+import com.example.db.entity.UserToCompany;
 import com.example.web.form.CreateCompanyForm;
 import com.example.web.model.CompanyWebModel;
 import com.example.web.service.CompanyWebService;
@@ -66,7 +67,7 @@ public class CompanyController {
     }
 
     @PostMapping("/{companyId}")
-    public CompanyWebModel addUserToCompany(@PathVariable Long companyId, @RequestParam("user_id") Long userId){
+    public UserToCompany addUserToCompany(@PathVariable Long companyId, @RequestParam("user_id") Long userId){
         return companyWebService.addUserToCompany(userId, companyId);
         // Может быть лучше сделать, чтобы отправлялся не параметр user_id, а объект UserWebModel
     }

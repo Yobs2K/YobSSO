@@ -1,6 +1,6 @@
 package com.example.web.service;
 
-import com.example.core.model.SimpleUserModel;
+import com.example.db.entity.UserToCompany;
 import com.example.web.form.CreateCompanyForm;
 import com.example.web.model.CompanyWebModel;
 import org.springframework.data.domain.Page;
@@ -20,7 +20,7 @@ public interface CompanyWebService {
 
     CompanyWebModel deleteCompany(Long id);
 
-    CompanyWebModel addUserToCompany(Long userId, Long companyId);
+    UserToCompany addUserToCompany(Long userId, Long companyId); //Добавить модель для UserToCompany
 
     CompanyWebModel addCompany(CreateCompanyForm companyForm, Long ownerId);
 

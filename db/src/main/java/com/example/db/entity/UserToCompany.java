@@ -2,10 +2,7 @@ package com.example.db.entity;
 
 import com.example.db.entity.enumerated.UserCompanyRole;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name= "user_to_company")
@@ -15,7 +12,7 @@ public class UserToCompany extends AbstractBaseEntity<Long> {
     private Long companyId;
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private UserCompanyRole userRole;
 
     public Long getCompanyId() {
