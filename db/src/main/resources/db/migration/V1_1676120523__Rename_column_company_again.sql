@@ -1,0 +1,1 @@
+ALTER TABLE company RENAME username TO name;
