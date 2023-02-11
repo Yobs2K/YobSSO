@@ -1,6 +1,6 @@
 package com.example.web.service;
 
-import com.example.core.exceptions.CompanyNotFoundException;
+import com.example.core.exception.CompanyNotFoundException;
 import com.example.core.service.CompanyService;
 import com.example.core.service.UserToCompanyService;
 import com.example.db.entity.Company;
@@ -44,8 +44,10 @@ public class CompanyWebServiceImpl implements CompanyWebService {
     }
 
     @Override
-    public List<CompanyWebModel> findAllAuthUserIsAdminCompanies(Long userId) {
-        return companyAssembler.toModelList(companyService.findAllUserIsAdminCompaniesByUserId(userId));
+    public List<CompanyWebModel> findAllOwnedCompanies(Long userId) {
+        return companyAssembler.toModelList(
+                companyService.findAllUserCompaniesByUserIdAndRole(userId, UserCompanyRole.OWNER)
+        );
     }
 
     @Override

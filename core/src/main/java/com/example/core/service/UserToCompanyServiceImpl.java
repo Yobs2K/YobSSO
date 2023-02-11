@@ -1,7 +1,8 @@
 package com.example.core.service;
 
-import com.example.core.exceptions.CompanyNotFoundException;
-import com.example.core.exceptions.UserNotFoundException;
+import com.example.core.exception.CompanyNotFoundException;
+import com.example.core.exception.UserNotFoundException;
+import com.example.core.exception.UserToCompanyNotFoundException;
 import com.example.db.entity.Company;
 import com.example.db.entity.User;
 import com.example.db.entity.UserToCompany;
@@ -43,7 +44,7 @@ public class UserToCompanyServiceImpl implements  UserToCompanyService{
         userRepository.save(user.addCompany(company));
         UserToCompany userToCompany = userToCompanyRepository
                 .findFirstByCompanyIdAndUserId(companyId, userId)
-                .orElseThrow(RuntimeException::new); // Добавить Exception
+                .orElseThrow(UserToCompanyNotFoundException::new); // Добавить Exception
         userToCompany.setUserRole(userRole);
         return userToCompanyRepository.save(userToCompany);
     }

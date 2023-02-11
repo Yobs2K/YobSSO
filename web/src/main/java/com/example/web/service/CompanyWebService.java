@@ -14,7 +14,7 @@ public interface CompanyWebService {
 
     List<CompanyWebModel> findAllAuthUserCompanies(Long userId);
 
-    List<CompanyWebModel> findAllAuthUserIsAdminCompanies(Long userId);
+    List<CompanyWebModel> findAllOwnedCompanies(Long userId);
 
     CompanyWebModel findCompanyById(Long id);
 

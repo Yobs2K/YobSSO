@@ -1,6 +1,6 @@
 package com.example.core.service;
 
-import com.example.core.exceptions.CompanyNotFoundException;
+import com.example.core.exception.CompanyNotFoundException;
 import com.example.db.entity.Company;
 import com.example.db.entity.enumerated.UserCompanyRole;
 import com.example.db.repository.CompanyRepository;
@@ -41,8 +41,8 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
-    public List<Company> findAllUserIsAdminCompaniesByUserId(Long userId) {
-        return companyRepository.findAllUserCompaniesByUserRole(userId, UserCompanyRole.ADMIN);
+    public List<Company> findAllUserCompaniesByUserIdAndRole(Long userId, UserCompanyRole userRole) {
+        return companyRepository.findAllUserCompaniesByUserRole(userId, userRole);
     }
 
     @Override

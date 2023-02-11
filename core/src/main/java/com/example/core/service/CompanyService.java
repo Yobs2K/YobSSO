@@ -1,6 +1,7 @@
 package com.example.core.service;
 
 import com.example.db.entity.Company;
+import com.example.db.entity.enumerated.UserCompanyRole;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,7 +17,7 @@ public interface CompanyService {
 
     List<Company> findAllUserCompaniesByUserId(Long userId);
 
-    List<Company> findAllUserIsAdminCompaniesByUserId(Long userId);
+    List<Company> findAllUserCompaniesByUserIdAndRole(Long userId, UserCompanyRole userRole);
 
     Company addCompany(Company company);
 

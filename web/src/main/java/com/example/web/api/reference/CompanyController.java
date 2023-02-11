@@ -38,7 +38,7 @@ public class CompanyController {
 
     @GetMapping("/admin") // Придумать адрес получше
     public List<CompanyWebModel> getAllAuthUserIsAdminCompanies(@AuthenticationPrincipal AuthUser authUser) {
-        return companyWebService.findAllAuthUserIsAdminCompanies(authUser.getUserModel().getId());
+        return companyWebService.findAllOwnedCompanies(authUser.getUserModel().getId());
     }
 
     @GetMapping("/{id}")

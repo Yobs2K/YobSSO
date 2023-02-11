@@ -1,6 +1,6 @@
 package com.example.core.service.security;
 
-import com.example.core.exceptions.UserNotFoundException;
+import com.example.core.exception.UserNotFoundException;
 import com.example.core.model.AuthUser;
 import com.example.db.entity.User;
 import com.example.db.repository.UserRepository;
