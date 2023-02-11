@@ -65,13 +65,4 @@ public class CompanyServiceImpl implements CompanyService{
         companyRepository.delete(deletingCompany);
         return deletingCompany;
     }
-
-    @Override
-    public Company addUserToCompanyByIds(Long userId, Long companyId) {
-        // TODO перенести в UserService
-        Company company = companyRepository.findById(companyId).orElseThrow(CompanyNotFoundException::new);
-        User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
-        userRepository.save(user.addCompany(company));
-        return companyRepository.findById(companyId).orElseThrow(CompanyNotFoundException::new);
-    }
 }

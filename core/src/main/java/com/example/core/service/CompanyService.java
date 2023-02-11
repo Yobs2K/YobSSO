@@ -21,6 +21,4 @@ public interface CompanyService {
     Company addCompany(Company company);
 
     Company deleteCompanyById(Long id);
-
-    Company addUserToCompanyByIds(Long userId, Long companyId);
 }
