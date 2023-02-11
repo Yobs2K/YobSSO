@@ -1,18 +1,14 @@
 package com.example.core.service;
 
 import com.example.core.exceptions.CompanyNotFoundException;
-import com.example.core.exceptions.UserNotFoundException;
 import com.example.db.entity.Company;
-import com.example.db.entity.User;
 import com.example.db.entity.enumerated.UserCompanyRole;
 import com.example.db.repository.CompanyRepository;
-import com.example.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,15 +16,11 @@ public class CompanyServiceImpl implements CompanyService{
 
     private final CompanyRepository companyRepository;
 
-    private final UserRepository userRepository;
-
     @Autowired
     public CompanyServiceImpl(
-            CompanyRepository companyRepository,
-            UserRepository userRepository
+            CompanyRepository companyRepository
     ) {
         this.companyRepository = companyRepository;
-        this.userRepository = userRepository;
     }
 
     public List<Company> getAll() {
@@ -45,13 +37,12 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public List<Company> findAllUserCompaniesByUserId(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
-        return new ArrayList<>(user.getCompanies());
+        return companyRepository.findAllUserCompanies(userId);
     }
 
     @Override
     public List<Company> findAllUserIsAdminCompaniesByUserId(Long userId) {
-        return companyRepository.findAllByUserIdIsAndUserRoleIs(userId, UserCompanyRole.ADMIN);
+        return companyRepository.findAllUserCompaniesByUserRole(userId, UserCompanyRole.ADMIN);
     }
 
     @Override

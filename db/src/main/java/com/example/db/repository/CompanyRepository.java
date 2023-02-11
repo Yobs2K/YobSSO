@@ -11,6 +11,19 @@ import java.util.List;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
-    @Query("select c from Company c inner join UserToCompany uc where uc.userId = :userId and uc.userRole = :userRole")
-    List<Company> findAllByUserIdIsAndUserRoleIs(Long userId, UserCompanyRole userRole);
+    @Query(
+            value = "select c from company c " +
+                    "inner join user_to_company on c.id = user_to_company.company_id " +
+                    "where user_to_company.user_id = :userId"
+            , nativeQuery = true
+    )
+    List<Company> findAllUserCompanies(Long userId);
+
+    @Query(
+            value = "select c from company c " +
+                    "inner join user_to_company on c.id = user_to_company.company_id " +
+                    "where user_to_company.user_id = :userId and user_to_company.user_role = :userRole"
+            , nativeQuery = true
+    )
+    List<Company> findAllUserCompaniesByUserRole(Long userId, UserCompanyRole userRole);
 }
