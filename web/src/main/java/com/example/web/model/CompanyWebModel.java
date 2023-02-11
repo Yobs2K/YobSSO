@@ -2,18 +2,18 @@ package com.example.web.model;
 
 public class CompanyWebModel extends BaseWebModel<CompanyWebModel> {
 
-    private String username;
+    private String name;
 
     private String description;
 
     private Long ownerId;
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public CompanyWebModel setUsername(String username) {
-        this.username = username;
+    public CompanyWebModel setName(String name) {
+        this.name = name;
         return this;
     }
 

@@ -12,7 +12,7 @@ public class CompanyRestModelAssembler extends BaseRestModelAssembler<Company, C
         return model
                     .setId(company.getId())
                     .setDescription(company.getDescription())
-                    .setUsername(company.getUsername());
+                    .setName(company.getName());
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 @Table(name = "company")
 public class Company extends AbstractBaseEntity<Long>{
 
-    private String username;
+    private String name;
     private String description;
 
     private Long ownerId;
@@ -24,12 +24,12 @@ public class Company extends AbstractBaseEntity<Long>{
         return this;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public Company setUsername(String username) {
-        this.username = username;
+    public Company setName(String name) {
+        this.name = name;
         return this;
     }
 

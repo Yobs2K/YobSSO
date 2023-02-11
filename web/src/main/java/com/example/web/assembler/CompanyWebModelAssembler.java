@@ -11,7 +11,7 @@ public class CompanyWebModelAssembler extends BaseWebModelAssembler<Company, Com
         CompanyWebModel model = new CompanyWebModel();
         model
                 .setId(entity.getId())
-                .setUsername(entity.getUsername())
+                .setName(entity.getName())
                 .setDescription(entity.getDescription())
                 .setOwnerId(entity.getOwnerId());
         return model;
