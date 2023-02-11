@@ -14,7 +14,7 @@ public class UserWebModelAssembler extends BaseWebModelAssembler<User, UserWebMo
                 .setUsername(entity.getUsername())
                 .setEmail(entity.getEmail())
                 .setBanned(entity.isBanned())
-                .setPassword(model.getPassword());
+                .setPassword(entity.getPassword());
         return model;
     }
 }
