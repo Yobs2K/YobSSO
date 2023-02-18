@@ -2,24 +2,24 @@ package com.example.core.model;
 
 import com.example.db.entity.User;
 
-public class UserModel {
+public class SimpleUserModel {
     private Long id;
     private String username;
     private String email;
 
-    public static UserModel of(User user) {
-        UserModel userModel = new UserModel();
-        userModel.setEmail(user.getEmail());
-        userModel.setUsername(user.getUsername());
-        userModel.setId(user.getId());
-        return userModel;
+    public static SimpleUserModel of(User user) {
+        SimpleUserModel simpleUserModel = new SimpleUserModel();
+        simpleUserModel.setEmail(user.getEmail());
+        simpleUserModel.setUsername(user.getUsername());
+        simpleUserModel.setId(user.getId());
+        return simpleUserModel;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public UserModel setUsername(String username) {
+    public SimpleUserModel setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -28,7 +28,7 @@ public class UserModel {
         return email;
     }
 
-    public UserModel setEmail(String email) {
+    public SimpleUserModel setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -37,7 +37,7 @@ public class UserModel {
         return id;
     }
 
-    public UserModel setId(Long id) {
+    public SimpleUserModel setId(Long id) {
         this.id = id;
         return this;
     }

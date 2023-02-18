@@ -6,14 +6,14 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 public class AuthUser extends org.springframework.security.core.userdetails.User{
-    private final UserModel userModel;
+    private final SimpleUserModel simpleUserModel;
 
     public AuthUser(User user, Collection<? extends GrantedAuthority> authorities) {
         super(user.getEmail(), user.getPassword(), authorities);
-        userModel = UserModel.of(user);
+        simpleUserModel = SimpleUserModel.of(user);
     }
 
-    public UserModel getUserModel() {
-        return userModel;
+    public SimpleUserModel getUserModel() {
+        return simpleUserModel;
     }
 }

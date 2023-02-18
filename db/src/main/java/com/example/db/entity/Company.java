@@ -1,9 +1,6 @@
 package com.example.db.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,6 +9,8 @@ public class Company extends AbstractBaseEntity<Long>{
 
     private String name;
     private String description;
+
+    private Long ownerId;
 
     @ManyToMany(mappedBy = "companies", fetch = FetchType.LAZY)
     private Set<User> users;
@@ -40,6 +39,15 @@ public class Company extends AbstractBaseEntity<Long>{
 
     public Company setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public Company setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 }

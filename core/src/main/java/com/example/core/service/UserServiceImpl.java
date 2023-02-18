@@ -1,6 +1,6 @@
 package com.example.core.service;
 
-import com.example.core.exceptions.UserNotFoundException;
+import com.example.core.exception.UserNotFoundException;
 import com.example.db.entity.User;
 import com.example.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public User getById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException());
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    }
+
+    public User addUser(User user) {
+        return userRepository.save(user);
     }
 }
