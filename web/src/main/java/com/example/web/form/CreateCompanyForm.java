@@ -4,7 +4,7 @@ public class CreateCompanyForm {
 
     private Long id;
 
-    private String username;
+    private String name;
 
     private String description;
 
@@ -17,12 +17,12 @@ public class CreateCompanyForm {
         return this;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public CreateCompanyForm setUsername(String username) {
-        this.username = username;
+    public CreateCompanyForm setName(String name) {
+        this.name = name;
         return this;
     }
 

@@ -59,7 +59,7 @@ public class CompanyWebServiceImpl implements CompanyWebService {
         Company company = new Company();
         company
                 .setOwnerId(ownerId)
-                .setName(companyForm.getUsername())
+                .setName(companyForm.getName())
                 .setDescription(companyForm.getDescription());
         company = companyService.addCompany(company);
         userToCompanyService.addUserToCompany(ownerId, company.getId(), UserCompanyRole.OWNER);
@@ -71,7 +71,7 @@ public class CompanyWebServiceImpl implements CompanyWebService {
         try {
             company = companyService
                     .getById(companyId)
-                    .setName(companyForm.getUsername())
+                    .setName(companyForm.getName())
                     .setDescription(companyForm.getDescription());
         }
         catch (CompanyNotFoundException e) {
@@ -79,7 +79,7 @@ public class CompanyWebServiceImpl implements CompanyWebService {
             company = new Company();
             company
                     .setOwnerId(userId)
-                    .setName(companyForm.getUsername())
+                    .setName(companyForm.getName())
                     .setDescription(companyForm.getDescription());
             company = companyService.addCompany(company);
             userToCompanyService.addUserToCompany(userId, company.getId(), UserCompanyRole.OWNER);
