@@ -13,8 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class CompanyWebServiceImpl implements CompanyWebService {
 
@@ -39,15 +37,15 @@ public class CompanyWebServiceImpl implements CompanyWebService {
     }
 
     @Override
-    public List<CompanyWebModel> findAllAuthUserCompanies(Long userId) {
-        return companyAssembler.toModelList(companyService.findAllUserCompaniesByUserId(userId));
+    public Page<CompanyWebModel> findAllAuthUserCompanies(Long userId, Pageable pageable) {
+        return companyService.findAllUserCompaniesByUserId(userId, pageable).map(companyAssembler::toModel);
     }
 
     @Override
-    public List<CompanyWebModel> findAllOwnedCompanies(Long userId) {
-        return companyAssembler.toModelList(
-                companyService.findAllUserCompaniesByUserIdAndRole(userId, UserCompanyRole.OWNER)
-        );
+    public Page<CompanyWebModel> findAllOwnedCompanies(Long userId, Pageable pageable) {
+        return companyService
+                .findAllUserCompaniesByUserIdAndRole(userId, UserCompanyRole.OWNER, pageable)
+                .map(companyAssembler::toModel);
     }
 
     @Override

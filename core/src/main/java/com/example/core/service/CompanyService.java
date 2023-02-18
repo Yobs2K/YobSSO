@@ -15,9 +15,9 @@ public interface CompanyService {
 
     Company getById(Long id);
 
-    List<Company> findAllUserCompaniesByUserId(Long userId);
+    Page<Company> findAllUserCompaniesByUserId(Long userId, Pageable pageable);
 
-    List<Company> findAllUserCompaniesByUserIdAndRole(Long userId, UserCompanyRole userRole);
+    Page<Company> findAllUserCompaniesByUserIdAndRole(Long userId, UserCompanyRole userRole, Pageable pageable);
 
     Company addCompany(Company company);
 

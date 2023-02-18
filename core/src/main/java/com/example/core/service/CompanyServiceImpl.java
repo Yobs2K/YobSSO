@@ -36,13 +36,13 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
-    public List<Company> findAllUserCompaniesByUserId(Long userId) {
-        return companyRepository.findAllUserCompanies(userId);
+    public Page<Company> findAllUserCompaniesByUserId(Long userId, Pageable pageable) {
+        return companyRepository.findAllUserCompanies(userId, pageable);
     }
 
     @Override
-    public List<Company> findAllUserCompaniesByUserIdAndRole(Long userId, UserCompanyRole userRole) {
-        return companyRepository.findAllUserCompaniesByUserRole(userId, userRole);
+    public Page<Company> findAllUserCompaniesByUserIdAndRole(Long userId, UserCompanyRole userRole, Pageable pageable) {
+        return companyRepository.findAllUserCompaniesByUserRole(userId, userRole.name(), pageable);
     }
 
     @Override
