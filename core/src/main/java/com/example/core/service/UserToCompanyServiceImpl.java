@@ -34,7 +34,7 @@ public class UserToCompanyServiceImpl implements  UserToCompanyService{
 
     @Override
     public Optional<UserToCompany> findByCompanyIdAndUserId(@NotNull Long userId,@NotNull Long companyId) {
-        return userToCompanyRepository.findFirstByCompanyIdAndUserId(userId, companyId);
+        return userToCompanyRepository.findFirstByCompanyIdAndUserId(companyId, userId);
     }
 
     @Override
