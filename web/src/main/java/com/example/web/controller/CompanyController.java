@@ -76,6 +76,12 @@ public class CompanyController {
         return modelAndView;
     }*/
 
+    @GetMapping("/add")
+    public ModelAndView addCompanyForm() {
+        return new ModelAndView("company_add_form");
+    }
+
+
     @PostMapping("")// Должен быть другой адрес
     public ModelAndView createCompany(@AuthenticationPrincipal AuthUser authUser, CreateCompanyForm companyForm) {
         CompanyWebModel companyWebModel = companyWebService.addCompany(companyForm, authUser.getUserModel().getId());
@@ -84,8 +90,15 @@ public class CompanyController {
         );
     }
 
+    @GetMapping("/{id}/update")
+    public ModelAndView changeCompanyForm(@PathVariable Long id) {
+        return new ModelAndView("company_change_form")
+                .addObject("companyId", id)
+                .addObject("company", companyWebService.findCompanyById(id));
+    }
+
     @PreAuthorize("@companySecurityService.hasAccess(#authUser, #id, 'OWNER')")
-    @PutMapping("/{id}")
+    @PostMapping("/{id}")
     public ModelAndView updateCompany(
             @AuthenticationPrincipal AuthUser authUser,
             CreateCompanyForm companyForm,
